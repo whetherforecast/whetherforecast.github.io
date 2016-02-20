@@ -47,3 +47,9 @@ function unixTimeConvertor(json) {
   var day = date.getDate();
   return (month + ' ' +day + ', ' + year + ' ' +  formattedTime);
 }
+
+function mainTemp_new(json) {
+    obj = JSON.parse(json);
+    temp = obj.main.temp; //Probably wrong?
+    $('#degree').text(temp);
+}
