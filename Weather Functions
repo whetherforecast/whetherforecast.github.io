@@ -12,7 +12,7 @@ function toFahrenheit(kelvin) {
 
 function mainTemp(obj) {
     temp = obj.main.temp;
-    int temp = toFahrenheit(temp);
+    temp = toFahrenheit(temp);
     $('#degree').text(temp);
     desc = (obj.weather[0]).description;
     $('#desc').text(desc);
