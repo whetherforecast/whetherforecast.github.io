@@ -12,9 +12,9 @@ function toFahrenheit(kelvin) {
 
 function mainTemp(obj) {
     temp = obj.main.temp;
-    temp = toFahrenheit(temp);
+    int temp = toFahrenheit(temp);
     $('#degree').text(temp);
-    desc = obj.weather.main + ' ' + obj.weather.description;
+    desc = (obj.weather[0]).description;
     $('#desc').text(desc);
     city = obj.name;
     $('#city').text(city);
@@ -56,8 +56,8 @@ function windy(obj) {
 }
 
 function rain(obj) {
-  main = obj.weather.main;
-  rain = obj.main.rain.3h; 
+  main = (obj.weather[0]).main;
+  rain = obj.main.rain."3h"; 
   if (main == "Rain" && rain > 0.3) {
    return "Heavy Rain";
   }
