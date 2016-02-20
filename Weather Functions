@@ -6,30 +6,46 @@ function toCelsius(fahrenheit) {
     return (5/9) * (fahrenheit-32);
 }
 
-function mainTemp(json) {
-  obj = JSON.parse(json);
-  temp = alert(obj.main.temp); //Probably wrong?
-  return temp;
+function toFahrenheit(kelvin) {
+ return kelvin*(9/5) - 459.67
 }
 
-function mainDescription(json) {
-  obj = JSON.parse(json);
-  desc1 = alert(obj.weather.main);
-  desc2 = alert(obj.weather.description);
-  return desc1 + ' ' + desc2;
+function mainTemp(json) {
+    obj = JSON.parse(json);
+    temp = obj.main.temp;
+    temp = toFahrenheit(temp);
+    $('#degree').text(temp);
+    desc = obj.weather.main + ' ' + obj.weather.description;
+    $('#desc').text(desc);
+    city = obj.name;
+    $('#city').text(city);
+}
+
+function windy(json) {
+ obj = JSON.parse(json);
+ wind = obj.wind.speed;
+ if (wind < 5) {
+  return "Light Wind"; 
+ }
+ else if (wind < 28) {
+  return "Gentle-moderate";
+ }
+ else if (wind < 61) {
+  return "Strong Wind";
+ }
+ else if (wind < 102) {
+  return "Gale";
+ }
+ else {
+  return "Storm";
+ }
 }
 
 function rain(json) {
   obj = JSON.parse(json);
-  main = alert(obj.weather.main);
+  main = obj.weather.main;
+  rain = obj.main.rain; 
   if (main == "Rain") {
-   return obj.weather.description;
-  }
-  else if (obj.rain.3h > 0.1){
-   return "Light Rain";
-  }
-  else {
-   return "Unlikely Chance of Rain";
   }
 }
 
@@ -46,10 +62,4 @@ function unixTimeConvertor(json) {
   var month = months[date.getMonth()];
   var day = date.getDate();
   return (month + ' ' +day + ', ' + year + ' ' +  formattedTime);
-}
-
-function mainTemp_new(json) {
-    obj = JSON.parse(json);
-    temp = obj.main.temp; //Probably wrong?
-    $('#degree').text(temp);
 }
