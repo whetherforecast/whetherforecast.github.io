@@ -25,7 +25,7 @@ function rain(json) {
   if (main == "Rain") {
    return obj.weather.description;
   }
-  else if (obj.rain.Value > 0.1){
+  else if (obj.rain.3h > 0.1){
    return "Light Rain";
   }
   else {
