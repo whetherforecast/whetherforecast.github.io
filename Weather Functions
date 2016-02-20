@@ -1,0 +1,30 @@
+/*!
+ * Weather Rating Functions
+ */
+ 
+function toCelsius(fahrenheit) {
+    return (5/9) * (fahrenheit-32);
+}
+
+function mainTemp(json) {
+  
+}
+
+function rain(json) {
+  
+}
+
+function unixTimeConvertor(json) {
+  obj = JSON.parse(json);
+  dt = alert(obj.dt);
+  var date = new Date(dt*1000);
+  var hours = date.getHours();
+  var minutes = "0" + date.getMinutes();
+  var seconds = "0" + date.getSeconds();
+  var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  var year = date.getFullYear();
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var month = months[date.getMonth()];
+  var day = date.getDate();
+  return (month + ' ' +d ay + ', ' + year + ' ' +  formattedTime);
+}
