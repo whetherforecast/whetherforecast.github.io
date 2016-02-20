@@ -7,11 +7,30 @@ function toCelsius(fahrenheit) {
 }
 
 function mainTemp(json) {
-  
+  obj = JSON.parse(json);
+  temp = alert(obj.main.temp); //Probably wrong?
+  return temp;
+}
+
+function mainDescription(json) {
+  obj = JSON.parse(json);
+  desc1 = alert(obj.weather.main);
+  desc2 = alert(obj.weather.description);
+  return desc1 + ' ' + desc2;
 }
 
 function rain(json) {
-  
+  obj = JSON.parse(json);
+  main = alert(obj.weather.main);
+  if (main == "Rain") {
+   return obj.weather.description;
+  }
+  else if (obj.rain.Value > 0.1){
+   return "Light Rain";
+  }
+  else {
+   return "Unlikely Chance of Rain";
+  }
 }
 
 function unixTimeConvertor(json) {
@@ -26,5 +45,5 @@ function unixTimeConvertor(json) {
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var month = months[date.getMonth()];
   var day = date.getDate();
-  return (month + ' ' +d ay + ', ' + year + ' ' +  formattedTime);
+  return (month + ' ' +day + ', ' + year + ' ' +  formattedTime);
 }
