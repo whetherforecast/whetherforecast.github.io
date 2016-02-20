@@ -3,11 +3,11 @@
  */
  
 function toCelsius(fahrenheit) {
-    return (5/9) * (fahrenheit-32);
+    return parseInt((5/9) * (fahrenheit-32));
 }
 
 function toFahrenheit(kelvin) {
- return kelvin*(9/5) - 459.67
+ return parseInt(kelvin*(9/5) - 459.67);
 }
 
 function mainTemp(obj) {
@@ -57,7 +57,7 @@ function windy(obj) {
 
 function rain(obj) {
   main = (obj.weather[0]).main;
-  rain = obj.main.rain."3h"; 
+  rain = obj.main.rain;//."3h"; 
   if (main == "Rain" && rain > 0.3) {
    return "Heavy Rain";
   }
