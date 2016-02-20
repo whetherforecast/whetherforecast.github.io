@@ -21,14 +21,31 @@ function mainTemp(json) {
     $('#city').text(city);
 }
 
+function snow(json) {
+    obj = JSON.parse(json);
+    temp = obj.main.temp;
+    temp = toFahrenheit(temp);
+    if (temp < 32)
+    {
+     return "Snowing";
+    }
+    else if (31 < temp < 34) {
+     return "Potential Snow";
+    }
+    else {
+     return "No snow";
+    }
+}
+
 function windy(json) {
  obj = JSON.parse(json);
  wind = obj.wind.speed;
  if (wind < 5) {
+ 
   return "Light Wind"; 
  }
  else if (wind < 28) {
-  return "Gentle-moderate";
+  return "Gentle Moderate Wind";
  }
  else if (wind < 61) {
   return "Strong Wind";
@@ -44,8 +61,18 @@ function windy(json) {
 function rain(json) {
   obj = JSON.parse(json);
   main = obj.weather.main;
-  rain = obj.main.rain; 
-  if (main == "Rain") {
+  rain = obj.main.rain.3h; 
+  if (main == "Rain" && rain > 0.3) {
+   return "Heavy Rain";
+  }
+  else if (main == "Rain") {
+   return "Rain";
+  }
+  else if (0 <rain < 0.15) {
+   return "Light Rain";
+  }
+  else {
+   return "No Rain";
   }
 }
 
