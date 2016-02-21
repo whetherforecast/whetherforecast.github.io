@@ -57,15 +57,8 @@ function windy(obj) {
 
 function rain(obj) {
   main = (obj.weather[0]).main;
-  rain = obj.main.rain;//."3h"; 
   if (main == "Rain" && rain > 0.3) {
-   return "Heavy Rain";
-  }
-  else if (main == "Rain") {
-   return "Rain";
-  }
-  else if (0 <rain < 0.15) {
-   return "Light Rain";
+   return (obj.weather[0]).description;
   }
   else {
    return "No Rain";
