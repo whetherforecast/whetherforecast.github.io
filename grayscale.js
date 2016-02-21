@@ -5,6 +5,113 @@
  */
 
 // jQuery to collapse the navbar on scroll
+
+
+$(document).ready(function(){
+                  
+                  intro();
+                  });
+
+function intro()
+{
+    var defaultReturnValue = 0;
+    var returnValue = defaultReturnValue;
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98", function(person)
+              {
+              if(person != null) {
+              
+              returnValue = person;
+              mainTemp(returnValue);
+              }
+              });
+}
+/*!
+ * Weather Rating Functions
+ */
+function toCelsius(fahrenheit) {
+    return (5/9) * (fahrenheit-32);
+}
+
+function toFahrenheit(kelvin) {
+    return kelvin*(9/5) - 459.67
+}
+
+function mainTemp(obj) {
+    temp = obj.main.temp;
+    temp = parseInt(toFahrenheit(temp));
+    $('#degree').text(temp);
+    desc = (obj.weather[0]).description;
+    $('#desc').text(desc);
+    city = obj.name;
+    $('#city').text(city);
+}
+
+function snow(obj) {
+    temp = obj.main.temp;
+    temp = toFahrenheit(temp);
+    if (temp < 32)
+    {
+        return "Snowing";
+    }
+    else if (31 < temp < 34) {
+        return "Potential Snow";
+    }
+    else {
+        return "No snow";
+    }
+}
+
+function windy(obj) {
+    wind = obj.wind.speed;
+    if (wind < 5) {
+        
+        return "Light Wind";
+    }
+    else if (wind < 28) {
+        return "Gentle Moderate Wind";
+    }
+    else if (wind < 61) {
+        return "Strong Wind";
+    }
+    else if (wind < 102) {
+        return "Gale";
+    }
+    else {
+        return "Storm";
+    }
+}
+
+function rain(obj) {
+    main = (obj.weather[0]).main;
+    //rain = obj.main.rain."3h";
+    if (main == "Rain" && rain > 0.3) {
+        return "Heavy Rain";
+    }
+    else if (main == "Rain") {
+        return "Rain";
+    }
+    else if (0 <rain < 0.15) {
+        return "Light Rain";
+    }
+    else {
+        return "No Rain";
+    }
+}
+
+function unixTimeConvertor(obj) {
+    dt = alert(obj.dt);
+    var date = new Date(dt*1000);
+    var hours = date.getHours();
+    var minutes = "0" + date.getMinutes();
+    var seconds = "0" + date.getSeconds();
+    var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    var year = date.getFullYear();
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var month = months[date.getMonth()];
+    var day = date.getDate();
+    return (month + ' ' +day + ', ' + year + ' ' +  formattedTime);
+}
+
 function collapseNavbar() {
     if ($(".navbar").offset().top > 50) {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
@@ -13,11 +120,11 @@ function collapseNavbar() {
     }
 }
 
-$(window).scroll(collapseNavbar);
-$(document).ready(collapseNavbar);
+jQuery(window).scroll(collapseNavbar);
+jQuery(document).ready(collapseNavbar);
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
-$(function() {
+jQuery(function() {
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
@@ -28,7 +135,7 @@ $(function() {
 });
 
 // Closes the Responsive Menu on Menu Item Click
-$('.navbar-collapse ul li a').click(function() {
+jQuery('.navbar-collapse ul li a').click(function() {
   if ($(this).attr('class') != 'dropdown-toggle active' && $(this).attr('class') != 'dropdown-toggle') {
     $('.navbar-toggle:visible').click();
   }
