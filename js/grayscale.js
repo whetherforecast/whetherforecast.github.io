@@ -60,34 +60,43 @@ function whatToWear() {
     var sentence = ""
     if (snowy == "true") {
         sentence = sentence + "Brrrr... We recommend bundling up in a coat, scarf, snow boots and mittens!";
+        $('#recipes').text("http://www.delish.com/cooking/g2111/snow-day-recipes/?");
     }
 	else if (windy == "true" && cold == "true") {
 		sentence ="It's windy and chilly today. Throw on some light layers--a tshirt, jacket, scarf and boots.";
-    }
+    		$('#recipes').text("http://www.bettycrocker.com/recipes/easy-beef-stew/6b9507cc-3bf8-456a-9b2a-c9cdd8d35c00");
+	}
 	else if (windy == "true" && hot == "true") {
 		sentence ="It's windy and warm today. Throw on some light layers--a tshirt, and shorts or pants.";
+		$('#recipes').text("http://www.delish.com/cooking/recipe-ideas/recipes/a42755/linguine-buttery-corn-scallions-goat-cheese")
     }
 	else if (rainy == "true" && cold == "true") {
 		sentence = "It's raining! We recommend wearing boots, pants, a rain jacket, and of course an umbrella!";
-    }
+    		$('#recipes').text("http://www.onceuponachef.com/2012/05/chai-spiced-banana-bread.html")
+	}
 	else if (rainy == "true" && hot == "true") {
 		sentence = "It's raining! We recommend wearing something light and of course an umbrella!";
-    }
-    else if (windy == "true") {
+		$('#recipes').text("http://www.babble.com/best-recipes/sunny-mango-bsail-bruschetta")
+	}
+    	else if (windy == "true") {
 		sentence ="It's windy today. Throw on some light layers--a tshirt, jacket, scarf and boots.";
+    		$('#recipes').text("http://www.onceuponachef.com/2014/09/chicken-soup-matzo-balls.html")
     }
 	else if (cold == "true") {
-        sentence = "It's cold in here...Layer up with a sweater, jacket, hat, and gloves";
-    }
-    else if (rainy == "true") {
-        sentence = "It's raining cats and dogs! We recommend wearing boots, pants, a rain jacket, and of course an umbrella!";
-    }
+        	sentence = "It's cold in here...Layer up with a sweater, jacket, hat, and gloves";
+		$('#recipes').text("http://cooking.nytimes.com/recipes/1015825-creamy-macaroni-and-cheese")
+	}
+    	else if (rainy == "true") {
+        	sentence = "It's raining cats and dogs! We recommend wearing boots, pants, a rain jacket, and of course an umbrella!";
+    		$('#recipes').text("http://www.onceuponachef.com/2009/10/hot-buttered-apple-cider-with-rum.html")
+    	}
     else if (average == "true") {
-        console.log("hello");
         sentence = "Not too hot, not too cold. Put on some jeans, a tshirt, sneakers and a cap.";
+    	$('#recipes').text("http://www.foodnetwork.co.uk/recipes/twice-baked-potatoes-1.html")
     }
     else if (hot == "true") {
         sentence = "It's swimsuit weather!! Put on your bathing suit, sun hat, shorts, and shades";
+    	$('#recipes').text("http://www.bonappetit.com/recipe/creamy-summer-slaw")
     }
 	$('#description').text(sentence);
 }
