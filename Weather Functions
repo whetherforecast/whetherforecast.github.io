@@ -78,3 +78,20 @@ function unixTimeConvertor(obj) {
   var day = date.getDate();
   return (month + ' ' +day + ', ' + year + ' ' +  formattedTime);
 }
+
+function searchRecipeStr() {
+ var searchStr;
+ if (cold == true) {
+  searchStr = searchStr + "hot, "; 
+ }
+ if (hot == true) {
+  searchStr = searchStr + "refreshing,cool,summer, "; 
+ }
+ if (rain == true) {
+  searchStr = searchStr + "rainy, cozy day, "; 
+ }
+ if (snow == true) {
+  searchStr = searchStr + "winter, "; 
+ }
+ searchStr = searchStr + "recipes";
+}
