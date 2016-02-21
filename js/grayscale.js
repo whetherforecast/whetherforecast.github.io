@@ -22,7 +22,7 @@ function intro()
 {
     var locationCity = getUrlParameter('city_choice');
 	console.log(locationCity);
-	var defaultReturnValue = 0;
+	var defaultReturnValue = 0; 
     var returnValue = defaultReturnValue;
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + locationCity + "&appid=44db6a862fba0b067b1930da0d769e98", function(person)
               {
